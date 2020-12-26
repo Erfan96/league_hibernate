@@ -20,6 +20,9 @@ public class City {
     @Column(name = "city_name", nullable = false, length = 50)
     private String name;
 
-    @OneToMany(mappedBy = "cityId")
+    @OneToMany(mappedBy = "city")
     private Set<Team> teams;
+
+    @OneToMany(mappedBy = "city")
+    private Set<Stadium> stadiums;
 }
