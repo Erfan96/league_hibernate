@@ -20,7 +20,7 @@ public class Stadium {
     private String name;
 
     @Column(name = "capacity", nullable = false)
-    private Double capacity;
+    private Integer capacity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
