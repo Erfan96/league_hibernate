@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
-@Table(name = "Match")
+@Table(name = "matches")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +20,7 @@ public class Match {
     @Column(name = "season", nullable = false)
     private Integer season;
 
-    @Column(name = "date_time", nullable = false)
+    @Column(name = "date_time"/*, nullable = false*/) /* ////////////////att/////////////////*/
     private Timestamp date;
 
     @OneToOne
