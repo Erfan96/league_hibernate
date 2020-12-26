@@ -17,9 +17,8 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "date_contract")
-    private Date dateContract;
+    @Column(name = "season")
+    private Integer season;
 
     @Column(name = "type", nullable = false)
     private String type;
