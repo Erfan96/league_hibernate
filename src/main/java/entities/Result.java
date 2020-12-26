@@ -24,6 +24,9 @@ public class Result {
     @JoinColumn(name = "team_id",nullable = false)
     private Team teamId;
 
+    @Column(name = "place", nullable = false)
+    private String place;
+
     @Column(name = "goal", nullable = false)
     private Integer Goal;
 
