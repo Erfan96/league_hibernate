@@ -25,8 +25,9 @@ public class User {
     @Column(name = "type", nullable = false)
     private String type;
 
-    @Column(name = "team_id", nullable = false)
-    private Integer teamId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "team_id", nullable = false)
+    private Team team;
 
     @Column(name = "enabled", nullable = false)
     private Boolean enabled;
