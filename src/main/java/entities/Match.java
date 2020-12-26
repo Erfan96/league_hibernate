@@ -3,6 +3,7 @@ package entities;
 import lombok.*;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "Match")
@@ -33,4 +34,7 @@ public class Match {
     @OneToOne
     @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
+
+    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
+    private Set<MatchEvent> matchEvents;
 }
