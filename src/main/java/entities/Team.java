@@ -19,6 +19,7 @@ public class Team {
     @Column(name = "team_name", nullable = false)
     private String name;
 
-    @Column(name = "city_id", nullable = false)
-    private Integer cityId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", nullable = false)
+    private City cityId;
 }
