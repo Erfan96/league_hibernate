@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class User {
 
     @Id
@@ -24,6 +23,9 @@ public class User {
 
     @Column(name = "type", nullable = false)
     private String type;
+
+    @Column(name = "position", nullable = false)
+    private String position;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id", nullable = false)
