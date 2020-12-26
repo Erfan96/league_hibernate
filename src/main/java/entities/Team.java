@@ -19,6 +19,10 @@ public class Team {
     @Column(name = "team_name", nullable = false)
     private String name;
 
+    @OneToOne(mappedBy = "team")
+    @JoinColumn(name = "coach_id")
+    private User coach;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
