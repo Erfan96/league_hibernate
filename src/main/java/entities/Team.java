@@ -21,5 +21,5 @@ public class Team {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
-    private City cityId;
+    private City city;
 }
