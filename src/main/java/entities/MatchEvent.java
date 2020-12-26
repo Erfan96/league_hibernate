@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "match_event")
@@ -21,7 +21,7 @@ public class MatchEvent {
     @Column(name = "type", nullable = false)
     private String Type;
 
-    @Column(name = "date_time", nullable = false)
+    @Column(name = "date_time"/*, nullable = false*/)      /* /////////////*/// */
     private Timestamp date;
 
     @ManyToOne(cascade = CascadeType.ALL)
