@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Team {
 
     @Id
@@ -26,4 +25,8 @@ public class Team {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
+
+    @OneToOne
+    @JoinColumn(name = "stadium", nullable = false)
+    private Stadium stadium;
 }
