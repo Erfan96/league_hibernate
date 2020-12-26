@@ -6,12 +6,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "match")
+@Table(name = "Match")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class match {
+public class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
