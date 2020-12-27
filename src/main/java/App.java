@@ -111,15 +111,24 @@ public class App {
 
         MatchEvent matchEvent = new MatchEvent();
         matchEvent.setMatch(match);
-        matchEvent.setType("2 Goals");
+        matchEvent.setType("Goal");
+        matchEvent.setDateTime(parseTimestamp("2019-02-11 20:30:00"));
         matchEvent.setUser(user);
         entityManager.persist(matchEvent);
 
         MatchEvent matchEvent2 = new MatchEvent();
         matchEvent2.setMatch(match);
-        matchEvent2.setType("1 Goal");
+        matchEvent2.setType("Goal");
+        matchEvent2.setDateTime(parseTimestamp("2019-02-11 20:52:26"));
         matchEvent2.setUser(user2);
         entityManager.persist(matchEvent2);
+
+        MatchEvent matchEvent3 = new MatchEvent();
+        matchEvent3.setMatch(match);
+        matchEvent3.setType("Goal");
+        matchEvent3.setDateTime(parseTimestamp("2019-02-11 21:33:45"));
+        matchEvent3.setUser(user);
+        entityManager.persist(matchEvent3);
 
         entityManager.getTransaction().commit();
         entityManager.close();
