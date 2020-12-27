@@ -1,8 +1,14 @@
 import entities.*;
 import util.JpaUtil;
 import javax.persistence.EntityManager;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class App {
+
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+
     public static void main(String[] args) {
         EntityManager entityManager = JpaUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
@@ -63,6 +69,7 @@ public class App {
         contract.setSalary(250.5);
         contract.setTeam(team);
         contract.setYears(5);
+        contract.setDate(parseDate("2015-11-15"));
         contract.setEnabled(true);
         entityManager.persist(contract);
 
@@ -71,7 +78,8 @@ public class App {
         contract2.setSeason(2018);
         contract2.setSalary(350.5);
         contract2.setTeam(team2);
-        contract2.setYears(2);
+        contract2.setYears(3);
+        contract2.setDate(parseDate("2018-07-04"));
         contract2.setEnabled(true);
         entityManager.persist(contract2);
 
@@ -113,5 +121,14 @@ public class App {
         entityManager.getTransaction().commit();
         entityManager.close();
         JpaUtil.shutdown();
+    }
+
+    private static Date parseDate(String date){
+        try {
+            return new Date(DATE_FORMAT.parse(date).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException(e);
+        }
     }
 }
