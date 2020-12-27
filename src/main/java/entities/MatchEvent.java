@@ -1,9 +1,7 @@
 package entities;
 
 import lombok.*;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 
 @Entity
@@ -21,8 +19,9 @@ public class MatchEvent {
     @Column(name = "type", nullable = false)
     private String Type;
 
-    @Column(name = "date_time"/*, nullable = false*/)      /* /////////////*/// */
-    private Timestamp date;
+    @Column(name = "date_time", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date dateTime;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "match_id", nullable = false)
