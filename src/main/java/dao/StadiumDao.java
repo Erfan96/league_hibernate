@@ -11,6 +11,6 @@ public class StadiumDao extends EntityDao<Stadium, Integer>{
     }
 
     public Class<Stadium> getEntityClass() {
-        return null;
+        return Stadium.class;
     }
 }
