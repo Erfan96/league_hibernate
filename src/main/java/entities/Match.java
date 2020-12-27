@@ -2,7 +2,7 @@ package entities;
 
 import lombok.*;
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -20,8 +20,9 @@ public class Match {
     @Column(name = "season", nullable = false)
     private Integer season;
 
-    @Column(name = "date_time"/*, nullable = false*/) /* ////////////////att/////////////////*/
-    private Timestamp date;
+    @Column(name = "date_time", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateTime;
 
     @OneToOne
     @JoinColumn(name = "stadium_id", nullable = false)
