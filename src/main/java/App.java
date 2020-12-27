@@ -2,12 +2,14 @@ import entities.*;
 import util.JpaUtil;
 import javax.persistence.EntityManager;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class App {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    private static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static void main(String[] args) {
         EntityManager entityManager = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -88,6 +90,7 @@ public class App {
         match.setStadium(stadium);
         match.setHomeTeam(team);
         match.setAwayTeam(team2);
+        match.setDateTime(parseTimestamp("2019-02-11 20:15:00"));
         entityManager.persist(match);
 
         Result result = new Result();
@@ -129,6 +132,15 @@ public class App {
         } catch (ParseException e) {
             e.printStackTrace();
             throw new IllegalArgumentException(e);
+        }
+    }
+
+    private static Timestamp parseTimestamp(String timestamp){
+        try {
+            return new Timestamp(DATE_TIME_FORMAT.parse(timestamp).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException();
         }
     }
 }
