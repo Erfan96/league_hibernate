@@ -1,3 +1,4 @@
+import dao.*;
 import entities.*;
 import util.JpaUtil;
 import javax.persistence.EntityManager;
@@ -8,44 +9,54 @@ import java.text.SimpleDateFormat;
 
 public class App {
 
+    private static UserDao userDao;
+    private static CityDao cityDao;
+    private static StadiumDao stadiumDao;
+    private static ContractDao contractDao;
+    private static MatchDao matchDao;
+    private static ResultDao resultDao;
+    private static MatchEventDao matchEventDao;
+    private static TeamDao teamDao;
+
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     private static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static void main(String[] args) {
         EntityManager entityManager = JpaUtil.getEntityManagerFactory().createEntityManager();
+        initializeDao(entityManager);
         entityManager.getTransaction().begin();
 
         City city = new City();
         city.setName("Tehran");
-        entityManager.persist(city);
+        cityDao.save(city);
 
         City city2 = new City();
         city2.setName("Shiraz");
-        entityManager.persist(city2);
+        cityDao.save(city2);
 
         Stadium stadium = new Stadium();
         stadium.setCity(city);
         stadium.setCapacity(72000);
         stadium.setName("Azadi");
-        entityManager.persist(stadium);
+        stadiumDao.save(stadium);
 
         Stadium stadium2 = new Stadium();
         stadium2.setName("Fajr");
         stadium2.setCapacity(10000);
         stadium2.setCity(city2);
-        entityManager.persist(stadium2);
+        stadiumDao.save(stadium2);
 
         Team team = new Team();
         team.setName("Persepolis");
         team.setCity(city);
         team.setStadium(stadium);
-        entityManager.persist(team);
+        teamDao.save(team);
 
         Team team2 = new Team();
         team2.setName("Bargh");
         team2.setCity(city2);
         team2.setStadium(stadium2);
-        entityManager.persist(team2);
+        teamDao.save(team2);
 
         User user = new User();
         user.setFName("Ali");
@@ -54,7 +65,7 @@ public class App {
         user.setPosition("Forward");
         user.setTeam(team);
         user.setEnabled(true);
-        entityManager.persist(user);
+        userDao.save(user);
 
         User user2 = new User();
         user2.setFName("Fazel");
@@ -63,7 +74,7 @@ public class App {
         user2.setPosition("Forward");
         user2.setTeam(team2);
         user2.setEnabled(true);
-        entityManager.persist(user2);
+        userDao.save(user2);
 
         Contract contract = new Contract();
         contract.setUser(user);
@@ -73,7 +84,7 @@ public class App {
         contract.setYears(5);
         contract.setDate(parseDate("2015-11-15"));
         contract.setEnabled(true);
-        entityManager.persist(contract);
+        contractDao.save(contract);
 
         Contract contract2 = new Contract();
         contract2.setUser(user2);
@@ -83,7 +94,7 @@ public class App {
         contract2.setYears(3);
         contract2.setDate(parseDate("2018-07-04"));
         contract2.setEnabled(true);
-        entityManager.persist(contract2);
+        contractDao.save(contract2);
 
         Match match = new Match();
         match.setSeason(2019);
@@ -91,7 +102,7 @@ public class App {
         match.setHomeTeam(team);
         match.setAwayTeam(team2);
         match.setDateTime(parseTimestamp("2019-02-11 20:15:00"));
-        entityManager.persist(match);
+        matchDao.save(match);
 
         Result result = new Result();
         result.setTeamId(team);
@@ -99,7 +110,7 @@ public class App {
         result.setGoal(2);
         result.setScore(3);
         result.setPlace("Home");
-        entityManager.persist(result);
+        resultDao.save(result);
 
         Result result2 = new Result();
         result2.setTeamId(team2);
@@ -107,32 +118,43 @@ public class App {
         result2.setGoal(1);
         result2.setScore(0);
         result2.setPlace("away");
-        entityManager.persist(result2);
+        resultDao.save(result2);
 
         MatchEvent matchEvent = new MatchEvent();
         matchEvent.setMatch(match);
         matchEvent.setType("Goal");
         matchEvent.setDateTime(parseTimestamp("2019-02-11 20:30:00"));
         matchEvent.setUser(user);
-        entityManager.persist(matchEvent);
+        matchEventDao.save(matchEvent);
 
         MatchEvent matchEvent2 = new MatchEvent();
         matchEvent2.setMatch(match);
         matchEvent2.setType("Goal");
         matchEvent2.setDateTime(parseTimestamp("2019-02-11 20:52:26"));
         matchEvent2.setUser(user2);
-        entityManager.persist(matchEvent2);
+        matchEventDao.save(matchEvent2);
 
         MatchEvent matchEvent3 = new MatchEvent();
         matchEvent3.setMatch(match);
         matchEvent3.setType("Goal");
         matchEvent3.setDateTime(parseTimestamp("2019-02-11 21:33:45"));
         matchEvent3.setUser(user);
-        entityManager.persist(matchEvent3);
+        matchEventDao.save(matchEvent3);
 
         entityManager.getTransaction().commit();
         entityManager.close();
         JpaUtil.shutdown();
+    }
+
+    private static void initializeDao(EntityManager entityManager){
+       userDao = new UserDao(entityManager);
+       cityDao = new CityDao(entityManager);
+       stadiumDao = new StadiumDao(entityManager);
+       contractDao = new ContractDao(entityManager);
+       matchDao = new MatchDao(entityManager);
+       resultDao = new ResultDao(entityManager);
+       matchEventDao = new MatchEventDao(entityManager);
+       teamDao = new TeamDao(entityManager);
     }
 
     private static Date parseDate(String date){
