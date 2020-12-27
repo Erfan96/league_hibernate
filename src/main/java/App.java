@@ -1,7 +1,5 @@
 import entities.*;
 import util.JpaUtil;
-
-
 import javax.persistence.EntityManager;
 
 public class App {
@@ -64,16 +62,16 @@ public class App {
         contract.setSeason(2015);
         contract.setSalary(250.5);
         contract.setTeam(team);
-        contract.setType("2 years");
+        contract.setYears(5);
         contract.setEnabled(true);
         entityManager.persist(contract);
 
         Contract contract2 = new Contract();
-        contract2.setUser(user);
+        contract2.setUser(user2);
         contract2.setSeason(2018);
         contract2.setSalary(350.5);
-        contract2.setTeam(team);
-        contract2.setType("4 years");
+        contract2.setTeam(team2);
+        contract2.setYears(2);
         contract2.setEnabled(true);
         entityManager.persist(contract2);
 
