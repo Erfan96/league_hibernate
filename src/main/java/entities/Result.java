@@ -1,6 +1,6 @@
 package entities;
-import lombok.*;
 
+import lombok.*;
 import javax.persistence.*;
 
 @Entity
