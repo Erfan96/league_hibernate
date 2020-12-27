@@ -25,6 +25,10 @@ public class Contract {
     @Column(name = "salary", nullable = false)
     private Double salary;
 
+    @Column(name = "date", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
