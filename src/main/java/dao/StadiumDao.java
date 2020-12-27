@@ -1,7 +1,6 @@
 package dao;
 
 import entities.Stadium;
-
 import javax.persistence.EntityManager;
 
 public class StadiumDao extends EntityDao<Stadium, Integer>{
