@@ -20,8 +20,8 @@ public class Contract {
     @Column(name = "season")
     private Integer season;
 
-    @Column(name = "type", nullable = false)
-    private String type;
+    @Column(name = "years", nullable = false)
+    private Integer years;
 
     @Column(name = "salary", nullable = false)
     private Double salary;
