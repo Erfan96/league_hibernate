@@ -31,5 +31,5 @@ public class Stadium {
     private Team team;
 
     @OneToMany(mappedBy = "stadium")
-    private Set<Match> matches;
+    private Set<Matches> matches;
 }
