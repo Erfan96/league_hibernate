@@ -1,14 +1,14 @@
 package dao;
 
-import entities.Match;
+import entities.Matches;
 import javax.persistence.EntityManager;
 
-public class MatchDao extends EntityDao<Match, Integer>{
+public class MatchDao extends EntityDao<Matches, Integer>{
     public MatchDao(EntityManager entityManager) {
         super(entityManager);
     }
 
-    public Class<Match> getEntityClass() {
-        return Match.class;
+    public Class<Matches> getEntityClass() {
+        return Matches.class;
     }
 }
