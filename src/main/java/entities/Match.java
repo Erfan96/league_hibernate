@@ -24,15 +24,15 @@ public class Match {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "stadium_id", nullable = false)
     private Stadium stadium;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "home_team_id", nullable = false)
     private Team homeTeam;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
 
