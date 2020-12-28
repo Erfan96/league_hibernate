@@ -2,6 +2,7 @@ package entities;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -27,7 +28,9 @@ public class MatchEvent {
     @JoinColumn(name = "match_id", nullable = false)
     private Match match;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "mat_eve_use",
+             joinColumns = @JoinColumn(name = "MATCHEVENT_ID"),
+             inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+    private Set<User> users;
 }
