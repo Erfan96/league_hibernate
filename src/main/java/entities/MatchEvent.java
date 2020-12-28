@@ -26,7 +26,7 @@ public class MatchEvent {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "match_id", nullable = false)
-    private Match match;
+    private Matches matches;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "mat_eve_use",
