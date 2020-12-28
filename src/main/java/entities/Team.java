@@ -34,4 +34,7 @@ public class Team {
     @OneToOne
     @JoinColumn(name = "stadium", nullable = false)
     private Stadium stadium;
+
+    @OneToMany(mappedBy = "team")
+    private Set<Contract> contracts;
 }
