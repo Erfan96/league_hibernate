@@ -29,16 +29,16 @@ public class User {
     @Column(name = "position", nullable = false)
     private String position;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private Set<Contract> contract;
 
     @Column(name = "enabled", nullable = false)
     private Boolean enabled;
 
-    @ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "users")
     private Set<MatchEvent> matchEvents;
 }
