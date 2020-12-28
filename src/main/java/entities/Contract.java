@@ -29,7 +29,7 @@ public class Contract {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
