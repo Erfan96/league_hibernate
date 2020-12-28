@@ -24,7 +24,7 @@ public class Team {
     @JoinColumn(name = "coach_id")
     private User coach;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "team")
     private Set<User> players;
 
     @ManyToOne(fetch = FetchType.LAZY)
