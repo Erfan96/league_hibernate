@@ -2,6 +2,7 @@ package entities;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -28,10 +29,16 @@ public class User {
     @Column(name = "position", nullable = false)
     private String position;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Contract> contract;
+
     @Column(name = "enabled", nullable = false)
     private Boolean enabled;
+
+    @ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
+    private Set<MatchEvent> matchEvents;
 }
