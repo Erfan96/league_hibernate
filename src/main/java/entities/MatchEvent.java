@@ -30,7 +30,7 @@ public class MatchEvent {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "mat_eve_use",
-             joinColumns = @JoinColumn(name = "MATCHEVENT_ID"),
-             inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+             joinColumns = @JoinColumn(name = "MATCHEVENT_ID", referencedColumnName = "id"),
+             inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "id"))
     private Set<User> users;
 }
