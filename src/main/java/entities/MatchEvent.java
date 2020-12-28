@@ -24,11 +24,11 @@ public class MatchEvent {
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date dateTime;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "match_id", nullable = false)
     private Matches matches;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "mat_eve_use",
              joinColumns = @JoinColumn(name = "MATCHEVENT_ID", referencedColumnName = "id"),
              inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "id"))
