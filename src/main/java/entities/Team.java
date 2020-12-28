@@ -3,6 +3,7 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "team")
@@ -19,9 +20,12 @@ public class Team {
     @Column(name = "team_name", nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "team")
+    @OneToOne
     @JoinColumn(name = "coach_id")
     private User coach;
+
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    private Set<User> players;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
