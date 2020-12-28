@@ -17,7 +17,7 @@ public class Result {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "match_id", nullable = false)
-    private Match match;
+    private Matches matches;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id",nullable = false)
