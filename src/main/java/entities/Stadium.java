@@ -2,6 +2,7 @@ package entities;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -28,4 +29,7 @@ public class Stadium {
 
     @OneToOne(mappedBy = "stadium")
     private Team team;
+
+    @OneToMany(mappedBy = "stadium")
+    private Set<Match> matches;
 }
