@@ -24,16 +24,16 @@ public class Match {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "stadium_id", nullable = false)
     private Stadium stadium;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "home_team_id", nullable = false)
+    @JoinColumn(name = "home_team_id")
     private Team homeTeam;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "away_team_id", nullable = false)
+    @JoinColumn(name = "away_team_id")
     private Team awayTeam;
 
     @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
