@@ -32,7 +32,7 @@ public class Matches {
     @JoinColumn(name = "home_team_id")
     private Team homeTeam;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "away_team_id")
     private Team awayTeam;
 
