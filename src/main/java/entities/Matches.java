@@ -24,7 +24,7 @@ public class Matches {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "stadium_id", nullable = false)
     private Stadium stadium;
 
@@ -32,7 +32,7 @@ public class Matches {
     @JoinColumn(name = "home_team_id")
     private Team homeTeam;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "away_team_id")
     private Team awayTeam;
 
