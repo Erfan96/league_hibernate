@@ -27,7 +27,7 @@ public class MatchEvent {
     @JoinColumn(name = "match_id", nullable = false)
     private Match match;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }
