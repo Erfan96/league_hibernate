@@ -15,11 +15,11 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "match_id", nullable = false)
     private Match match;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id",nullable = false)
     private Team teamId;
 
