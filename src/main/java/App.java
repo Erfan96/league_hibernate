@@ -186,14 +186,8 @@ public class App {
 //        userDao.save(user);
 
 
-
-        User user = userDao.load(3);
+        User user = userDao.load(2);
         System.out.println(user.getLName());
-
-//        user.setLName("Akbari");
-//        userDao.update(user);
-
-        userDao.delete(user);
 
 
         entityManager.getTransaction().commit();
