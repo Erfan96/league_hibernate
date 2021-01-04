@@ -30,7 +30,10 @@ public class Contract {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumns(
+    {@JoinColumn(name = "user_id", referencedColumnName = "id"),
+    @JoinColumn(name = "user_name", referencedColumnName = "last_name")
+    })
     private User user;
 
     @ManyToOne
