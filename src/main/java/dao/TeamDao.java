@@ -1,12 +1,12 @@
 package dao;
 
+import entities.Matches;
+import entities.Result;
 import entities.Team;
 import javax.persistence.EntityManager;
 import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 public class TeamDao extends EntityDao<Team, Integer> {
