@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class App {
@@ -174,7 +175,7 @@ public class App {
 //        contract.setYears(1);
 //        contract.setEnabled(true);
 //        contractDao.save(contract);
-
+//
 //        Team team = teamDao.load(2);
 //        User user = new User();
 //        user.setFName("Hashem");
@@ -186,9 +187,18 @@ public class App {
 //        userDao.save(user);
 
 
-        User user = userDao.load(2);
-        System.out.println(user.getLName());
+//        User user = userDao.load(2);
+//        System.out.println(user.getLName());
 
+         //userDao.getCoachHasMaxSalary();
+
+        //***userDao.getPlayerHasMaxSalaryPerSeason();
+
+        //teamDao.countTeamForEachCity();
+
+        //resultDao.sumScoreForEachTeam();
+
+        resultDao.getChampion();
 
         entityManager.getTransaction().commit();
         entityManager.close();
