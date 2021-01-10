@@ -56,8 +56,9 @@ public class ResultDao extends EntityDao<Result, Integer> {
         criteria.orderBy(cb.desc(cb.sum(fromResult.get("score"))));
 
         TypedQuery<Tuple> typedQuery = entityManager.createQuery(criteria).setMaxResults(1);
-        Tuple list = typedQuery.getSingleResult();
+        List<Tuple> list = typedQuery.getResultList();
 
-        System.out.println(list);
+        list.forEach(r ->
+                System.out.println(r.get(0) + " --> " + r.get(1)));
     }
 }
